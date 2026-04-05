@@ -1,0 +1,42 @@
+[
+	{
+		"name" : "Room #0",
+		"student_count" : 9
+	},
+	{
+		"name" : "Room #1",
+		"student_count" : 7
+	},
+	{
+		"name" : "Room #2",
+		"student_count" : 9
+	},
+	{
+		"name" : "Room #3",
+		"student_count" : 5
+	},
+	{
+		"name" : "Room #4",
+		"student_count" : 11
+	},
+	{
+		"name" : "Room #5",
+		"student_count" : 9
+	},
+	{
+		"name" : "Room #6",
+		"student_count" : 4
+	},
+	{
+		"name" : "Room #7",
+		"student_count" : 10
+	},
+	{
+		"name" : "Room #8",
+		"student_count" : 12
+	},
+	{
+		"name" : "Room #9",
+		"student_count" : 7
+	}
+]
