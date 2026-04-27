@@ -2,25 +2,55 @@
 Student Room Analysis. 
 
 # Overview
-This project processes student and room datasets stored in JSON files and loads the data into MYSQL relational database.
-SQL queries are used to analyze the data and the results are exported in JSON format. Some of the results are
-- the number of students per room
-- age statistics
-- mixed gender room allocations
+This project analyzes student-room allocation using MySQL and Python.
+It implements a full data pipeline from JSON ingestion to structured output.
 
 # Architecture
-The system follow the below data pipeline architecture.
+JSON Files --> loader.py (ETL - Load data)--> MySQL Database (students_rooms) --> views.py (SQL logic layer) --> queries.py (data retrieval) --> exporter.py (formatting + output) --> output.json
+
+## Breakdown of what each part does.
 1. Data Source
-   * rooms.json
-   * students.json
-2. Data Ingestion
-Python script reads JSON files and inserts the records into the database.
-3. Database
-   * MySQL Schema is students_rooms
-   * Tables:
-     * rooms
-     * students
-4. Processing
-   * SQL queries performm data analysis to answer some key important questions
-5. Output
-   * The query results was exported to JSON format for each question.
+students.json & rooms.json
+
+2. loader.py
+* Reads JSON
+* Inserts into MySQL
+* Uses bulk insert (executemany)
+* Handles reset of tables
+
+3. MySQL (students_rooms)
+* Stores structured data
+* Enforces:
+          Primary keys
+          Foreign keys
+
+4. views.py
+   * Contains all SQL logic
+   * Answers the 4 questions:
+     - students per room
+     - avg age
+     - age difference
+     - mixed gender
+
+5. queries.py
+ * Fetches data from views
+
+6. exporter.py
+* Converts results → JSON/XML
+* Handles Decimal
+
+7. main.py
+Orchestrates everything: reset → load → create views → query → export
+
+# Features
+* JSON → MySQL data loading
+* SQL views for analytics
+* CLI-based execution
+* JSON/XML export
+* OOP-based architecture
+
+# Queries Implemented
+* Rooms and number of students
+* 5 rooms with smallest average age
+* 5 rooms with largest age difference
+* Rooms with mixed gender
