@@ -40,7 +40,8 @@ students.json & rooms.json
 * Handles Decimal
 
 7. main.py
-Orchestrates everything: reset → load → create views → query → export
+* Orchestrates everything:
+  - reset → load → create views → query → export
 
 # Features
 * JSON → MySQL data loading
